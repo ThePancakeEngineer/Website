@@ -45,12 +45,12 @@
       .status { font:500 .7rem "DM Mono",monospace; text-transform:uppercase; color:#716b69; }
       .games { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
       .game.featured { grid-column:span 3; background:var(--ink); color:white; }
-      .game.featured .game-art { background:#3b3b42; font-size:5.2rem; }
+      .game.featured .game-art { background:var(--red); font-size:5.2rem; }
       .game.featured p { color:#d4d0d0; max-width:360px; }
       .game { min-height:390px; border:1px solid var(--line); background:white; padding:20px; display:flex; flex-direction:column; justify-content:space-between; transition:transform .2s, box-shadow .2s; }
       .game:hover { transform:translateY(-5px); box-shadow:8px 8px 0 var(--red); }
       .game-art { height:205px; display:grid; place-items:center; overflow:hidden; border-radius:2px; font-size:4.5rem; line-height:1; }
-      .game:nth-child(1) .game-art { background:#ffdbd6; }
+      .game:not(.featured):nth-child(1) .game-art { background:#ffdbd6; }
       .game:nth-child(2) .game-art { background:#ffeab1; }
       .game:nth-child(3) .game-art { background:#dfeeea; }
       .game.placeholder .game-art { background:var(--red); color:#000; }
