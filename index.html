@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <style>
-      :root { --red:#ff3131; --ink:#1d1d20; --cream:#fff9f4; --line:#e8dcd6; --pink:#ffe7e4; }
+      :root { --red:#ff3131; --ink:#1d1d20; --cream:#fff9f4; --line:#e8dcd6; --pink:#ffe7e4; --nav-height:72px; }
       * { box-sizing: border-box; }
       html { scroll-behavior: smooth; }
       body { margin:0; background:var(--cream); color:var(--ink); font-family:"Space Grotesk",sans-serif; }
@@ -36,6 +36,7 @@
       .button:hover { transform:translateY(-3px); }
       .arrow { font-size:1.25rem; line-height:0; }
       main { padding:104px 0; }
+      main section { scroll-margin-top:calc(var(--nav-height) + 12px); }
       .section-head { display:flex; justify-content:space-between; align-items:end; margin-bottom:34px; }
       h2 { margin:8px 0 0; font-size:clamp(2.1rem,4vw,3.6rem); line-height:.93; letter-spacing:-.065em; }
       .status { font:500 .7rem "DM Mono",monospace; text-transform:uppercase; color:#716b69; }
@@ -98,5 +99,11 @@
       </section>
     </main>
     <footer><span>© 2026 Pancake Engineer</span><a href="https://www.pancakeengineer.net">www.pancakeengineer.net</a></footer>
+    <script>
+      const siteNav = document.querySelector('.site-nav');
+      const updateNavHeight = () => document.documentElement.style.setProperty('--nav-height', `${siteNav.offsetHeight}px`);
+      new ResizeObserver(updateNavHeight).observe(siteNav);
+      updateNavHeight();
+    </script>
   </body>
 </html>
