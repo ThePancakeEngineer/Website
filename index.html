@@ -18,12 +18,15 @@
       .hero::before { content:""; position:absolute; width:760px; height:760px; border:2px solid rgba(255,255,255,.18); border-radius:50%; top:-470px; right:-500px; box-shadow:0 0 0 56px rgba(255,255,255,.06),0 0 0 112px rgba(255,255,255,.04); }
       .hero::after { content:""; position:absolute; width:280px; height:280px; border-radius:50%; background:rgba(117,11,15,.22); bottom:-160px; left:-130px; }
       nav, .hero-content, main, footer { width:min(1120px, calc(100% - 48px)); margin:0 auto; }
-      .site-nav { position:sticky; top:0; z-index:10; background:#ffd23f; border-bottom:1px solid rgba(29,29,32,.25); }
+      .site-nav { position:sticky; top:0; z-index:10; background:#ffd23f; border-bottom:1px solid rgba(29,29,32,.25); transition:background-color .35s,border-color .35s; }
       nav { min-height:72px; display:grid; grid-template-columns:auto minmax(0,1fr); align-items:center; gap:32px; }
-      .brand { color:var(--ink); font:500 .74rem "DM Mono",monospace; letter-spacing:.04em; white-space:nowrap; }
+      .brand { color:var(--ink); font:500 .74rem "DM Mono",monospace; letter-spacing:.04em; white-space:nowrap; transition:color .35s; }
       .nav-links { width:min(100%,560px); justify-self:end; display:grid; grid-template-columns:repeat(auto-fit,minmax(105px,1fr)); gap:8px; font:500 .76rem "DM Mono",monospace; text-transform:uppercase; }
-      .nav-links a { color:var(--ink); padding:10px 8px; text-align:center; text-decoration:none; white-space:nowrap; transition:background-color .2s,color .2s; }
+      .nav-links a { color:var(--ink); padding:10px 8px; text-align:center; text-decoration:none; white-space:nowrap; transition:background-color .35s,color .35s; }
       .nav-links a:hover, .nav-links a:focus-visible { color:#ffd23f; background:var(--ink); outline:none; }
+      .site-nav.is-hero { background:var(--red); border-bottom-color:rgba(255,255,255,.25); }
+      .site-nav.is-hero .brand, .site-nav.is-hero .nav-links a { color:white; }
+      .site-nav.is-hero .nav-links a:hover, .site-nav.is-hero .nav-links a:focus-visible { color:var(--red); background:white; }
       .hero-content { position:relative; z-index:1; padding:70px 0 80px; display:grid; grid-template-columns:minmax(0,1fr) minmax(390px,540px); align-items:center; gap:36px; }
       .hero-logo { width:100%; display:block; }
       .hero-copy { max-width:790px; }
@@ -66,7 +69,7 @@
     </style>
   </head>
   <body>
-    <div class="site-nav">
+    <div class="site-nav is-hero">
       <nav aria-label="Primary navigation">
         <span class="brand">pancakeengineer.net</span>
         <div class="nav-links"><a href="#games">Main game</a><a href="#projects">Future projects</a><a href="mailto:dev@pancakeengineer.net">Contact</a></div>
@@ -101,9 +104,15 @@
     <footer><span>© 2026 Pancake Engineer</span><a href="https://www.pancakeengineer.net">www.pancakeengineer.net</a></footer>
     <script>
       const siteNav = document.querySelector('.site-nav');
-      const updateNavHeight = () => document.documentElement.style.setProperty('--nav-height', `${siteNav.offsetHeight}px`);
-      new ResizeObserver(updateNavHeight).observe(siteNav);
-      updateNavHeight();
+      const hero = document.querySelector('.hero');
+      const updateNav = () => {
+        document.documentElement.style.setProperty('--nav-height', `${siteNav.offsetHeight}px`);
+        siteNav.classList.toggle('is-hero', hero.getBoundingClientRect().bottom > siteNav.offsetHeight);
+      };
+      new ResizeObserver(updateNav).observe(siteNav);
+      window.addEventListener('scroll', updateNav, { passive:true });
+      window.addEventListener('resize', updateNav);
+      updateNav();
     </script>
   </body>
 </html>
