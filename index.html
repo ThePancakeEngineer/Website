@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <style>
-      :root { --red:#ff3131; --ink:#1d1d20; --cream:#fff9f4; --line:#e8dcd6; --pink:#ffe7e4; --nav-height:72px; }
+      :root { --red:#ff3131; --yellow:#ffd23f; --ink:#1d1d20; --cream:#fff9f4; --line:#e8dcd6; --pink:#ffe7e4; --nav-height:72px; }
       * { box-sizing: border-box; }
       html { scroll-behavior: smooth; }
       body { margin:0; background:var(--cream); color:var(--ink); font-family:"Space Grotesk",sans-serif; }
@@ -18,12 +18,12 @@
       .hero::before { content:""; position:absolute; width:760px; height:760px; border:2px solid rgba(255,255,255,.18); border-radius:50%; top:-470px; right:-500px; box-shadow:0 0 0 56px rgba(255,255,255,.06),0 0 0 112px rgba(255,255,255,.04); }
       .hero::after { content:""; position:absolute; width:280px; height:280px; border-radius:50%; background:rgba(117,11,15,.22); bottom:-160px; left:-130px; }
       nav, .hero-content, main, footer { width:min(1120px, calc(100% - 48px)); margin:0 auto; }
-      .site-nav { position:sticky; top:0; z-index:10; background:#ffd23f; border-bottom:1px solid rgba(29,29,32,.25); transition:background-color .35s,border-color .35s; }
+      .site-nav { position:sticky; top:0; z-index:10; background:var(--yellow); border-bottom:1px solid rgba(29,29,32,.25); transition:background-color .35s,border-color .35s; }
       nav { min-height:72px; display:grid; grid-template-columns:auto minmax(0,1fr); align-items:center; gap:32px; }
       .brand { color:var(--ink); font:500 .74rem "DM Mono",monospace; letter-spacing:.04em; white-space:nowrap; transition:color .35s; }
       .nav-links { width:min(100%,560px); justify-self:end; display:grid; grid-template-columns:repeat(auto-fit,minmax(105px,1fr)); gap:8px; font:500 .76rem "DM Mono",monospace; text-transform:uppercase; }
       .nav-links a { color:var(--ink); padding:10px 8px; text-align:center; text-decoration:none; white-space:nowrap; transition:background-color .35s,color .35s; }
-      .nav-links a:hover, .nav-links a:focus-visible { color:#ffd23f; background:var(--ink); outline:none; }
+      .nav-links a:hover, .nav-links a:focus-visible { color:var(--yellow); background:var(--ink); outline:none; }
       .site-nav.is-hero { background:var(--red); border-bottom-color:rgba(255,255,255,.25); }
       .site-nav.is-hero .brand, .site-nav.is-hero .nav-links a { color:white; }
       .site-nav.is-hero .nav-links a:hover, .site-nav.is-hero .nav-links a:focus-visible { color:var(--red); background:white; }
@@ -45,7 +45,7 @@
       .status { font:500 .7rem "DM Mono",monospace; text-transform:uppercase; color:#716b69; }
       .games { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
       .game.featured { grid-column:span 3; background:var(--ink); color:white; }
-      .game.featured .game-art { background:var(--red); font-size:5.2rem; }
+      .game.featured .game-art { background:var(--yellow); color:var(--ink); font-size:5.2rem; }
       .game.featured p { color:#d4d0d0; max-width:360px; }
       .game { min-height:390px; border:1px solid var(--line); background:white; padding:20px; display:flex; flex-direction:column; justify-content:space-between; transition:transform .2s, box-shadow .2s; }
       .game:hover { transform:translateY(-5px); box-shadow:8px 8px 0 var(--red); }
